@@ -779,16 +779,6 @@ public without sharing class PSTimelineController
       contextMap.put('userName', UserInfo.getUserName());
       contextMap.put('orgName', UserInfo.getOrganizationName());
 
-      if (Network.getNetworkId() != null)
-      {
-        contextMap.put('networkId', Network.getNetworkId());
-
-        Network nw = [SELECT Name, UrlPathPrefix FROM Network WHERE Id = :Network.getNetworkId() LIMIT 1];
-
-        contextMap.put('networkName', nw.Name);
-        contextMap.put('networkPrefix', '/' + nw.UrlPathPrefix);
-      }
-
       return (contextMap);
     }
     catch (exception e)
